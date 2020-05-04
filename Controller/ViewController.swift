@@ -1,0 +1,31 @@
+
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    @IBOutlet weak var storyLabel: UILabel!
+    @IBOutlet weak var choice1Button: UIButton!
+    @IBOutlet weak var choice2Button: UIButton!
+    
+    var storyBrain = StoryBrain()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateUI()
+    }
+    
+    @IBAction func pressChoice(_ sender: UIButton) {
+        let userChoice = sender.currentTitle!
+        storyBrain.choiceMade(userChoice)
+        updateUI()
+    }
+    
+    func updateUI() {
+        storyLabel.text = storyBrain.getStoryTitle()
+        choice1Button.setTitle(storyBrain.getChoice1Text(), for: .normal)
+        choice2Button.setTitle(storyBrain.getChoice2Text(), for: .normal)
+    }
+
+}
+
